@@ -8,6 +8,7 @@ const app = {
   methods: {
     addGoal() {
       this.goals.push(this.enteredValue);
+      this.enteredValue = '';
     },
   },
 };
