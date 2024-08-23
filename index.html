@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A First App</title>
     <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="./app.js"></script>
   </head>
   <body>
     <div id="app">
       <div>
         <label for="goal">Goal</label>
-        <input type="text" id="goal" />
+        <input type="text" id="goal" v-model="enteredValue"/>
         <button>Add Goal</button>
       </div>
       <ul>
         <li>Test</li>
       </ul>
     </div>
-    <script src="app.js"></script>
   </body>
 </html>
