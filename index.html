@@ -17,11 +17,13 @@
     </header>
     <section id="user-goals">
       <h2>My course goals</h2>
-      <input type="text" />
-      <button>Add Goal</button>
-      <p>No goals have been added yet - please start adding some!</p>
-      <ul>
-        <li>Goal</li>
+      <input type="text" v-model.lazy="goal" />
+      <button @click="addGoal">Add Goal</button>
+      <p v-if="!hasGoals">
+        No goals have been added yet - please start adding some!
+      </p>
+      <ul v-if="hasGoals">
+        <li v-for="goal of goals">{{goal}}</li>
       </ul>
     </section>
   </body>
