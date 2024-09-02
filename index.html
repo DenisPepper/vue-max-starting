@@ -9,21 +9,31 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" type="module"></script>
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
   </head>
   <body>
     <header>
-      <h1>Vue Course Goals</h1>
+      <h1>FriendList</h1>
     </header>
-    <section id="user-goals">
-      <h2>My course goals</h2>
-      <input type="text" v-model.lazy="goal" />
-      <button @click="addGoal">Add Goal</button>
-      <p v-if="!hasGoals">
-        No goals have been added yet - please start adding some!
-      </p>
-      <ul v-if="hasGoals">
-        <li v-for="goal of goals">{{goal}}</li>
+    <section id="app">
+      <ul>
+        <li>
+          <h2>Manuel Lorenz</h2>
+          <button>Show Details</button>
+          <ul>
+            <li><strong>Phone:</strong> 01234 5678 991</li>
+            <li><strong>Email:</strong> manuel@localhost.com</li>
+          </ul>
+        </li>
+        <li>
+          <h2>Julie Jones</h2>
+          <button>Show Details</button>
+          <ul>
+            <li><strong>Phone:</strong> 09876 543 221</li>
+            <li><strong>Email:</strong> julie@localhost.com</li>
+          </ul>
+        </li>
       </ul>
     </section>
   </body>
