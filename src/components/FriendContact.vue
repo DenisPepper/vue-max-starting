@@ -15,6 +15,8 @@ export default {
     firstName: {
       type: String,
       required: true,
+      default: 'No name',
+      validator: (value) => value.length >= 3,
     },
     phone: {
       type: String,
