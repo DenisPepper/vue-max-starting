@@ -1,25 +1,20 @@
 <template>
   <li>
-    <h2>{{ friend.firstName }}</h2>
+    <h2>{{ firstName }}</h2>
     <button @click="toggleDetails">Show Details</button>
     <ul v-if="showDetails">
-      <li :key="friend.id">{{ friend.phone }}</li>
-      <li>{{ friend.email }}</li>
+      <li>{{ phone }}</li>
+      <li>{{ email }}</li>
     </ul>
   </li>
 </template>
 
 <script>
 export default {
+  props: ['firstName', 'phone', 'email'],
   data() {
     return {
       showDetails: false,
-      friend: {
-        id: '123',
-        firstName: 'Denis',
-        phone: '156489',
-        email: 'email@google.com',
-      },
     };
   },
   methods: {
