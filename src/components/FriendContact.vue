@@ -2,6 +2,7 @@
   <li>
     <h2>{{ firstName }}</h2>
     <button @click="toggleDetails">Show Details</button>
+    <button @click="setFavoriteStatus">Toggle ⭐</button>
     <ul v-if="showDetails">
       <li>{{ phone }}</li>
       <li>{{ email }}</li>
@@ -35,6 +36,9 @@ export default {
   methods: {
     toggleDetails() {
       this.showDetails = !this.showDetails;
+    },
+    setFavoriteStatus() {
+      this.$emit('set-favorite');
     },
   },
 };

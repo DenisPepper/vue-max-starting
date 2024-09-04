@@ -10,6 +10,7 @@
         :first-name="friend.firstName"
         :phone="friend.phone"
         :email="friend.email"
+        @set-favorite="setFavoriteStatus"
       />
     </ul>
   </section>
@@ -35,6 +36,11 @@ export default {
       ],
     };
   },
+  methods: {
+    setFavoriteStatus() {
+      console.log('seting up favorite status ...');
+    }
+  }
 };
 </script>
 
