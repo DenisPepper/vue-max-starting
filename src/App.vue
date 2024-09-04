@@ -37,10 +37,10 @@ export default {
     };
   },
   methods: {
-    setFavoriteStatus() {
-      console.log('seting up favorite status ...');
-    }
-  }
+    setFavoriteStatus(userName) {
+      console.log(`seting up favorite status for ${userName}`);
+    },
+  },
 };
 </script>
 

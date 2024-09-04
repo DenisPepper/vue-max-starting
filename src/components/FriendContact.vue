@@ -38,7 +38,7 @@ export default {
       this.showDetails = !this.showDetails;
     },
     setFavoriteStatus() {
-      this.$emit('set-favorite');
+      this.$emit('set-favorite', this.firstName);
     },
   },
 };
