@@ -28,13 +28,10 @@ export default {
       required: true,
     },
   },
-  emits: {
-    ['set-favorite']: (userName) => {
-      console.log(`this handler will validate the ${userName}`);
-      // see more: https://vuejs.org/guide/components/events.html 
-      return !!userName;
-    },
-  },
+  emits: ['set-favorite'],
+  // если валидация не нужна, то можно просто задекларировать список событий компонента в emits
+  // чтобы оптимизировать работу Vue-фреймворка
+  // see more: https://vuejs.org/guide/components/events.html
   data() {
     return {
       showDetails: false,
