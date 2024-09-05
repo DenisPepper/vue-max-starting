@@ -28,6 +28,13 @@ export default {
       required: true,
     },
   },
+  emits: {
+    ['set-favorite']: (userName) => {
+      console.log(`this handler will validate the ${userName}`);
+      // see more: https://vuejs.org/guide/components/events.html 
+      return !!userName;
+    },
+  },
   data() {
     return {
       showDetails: false,
