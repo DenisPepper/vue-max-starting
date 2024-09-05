@@ -14,7 +14,6 @@
         :email="friend.email"
         :is-favorite="friend.isFavorite"
         @set-favorite="setFavoriteStatus"
-        @remove-friend="removeFriend"
       />
     </ul>
   </section>
@@ -26,6 +25,11 @@ export default {
     return {
       nextId: 1,
       friends: [],
+    };
+  },
+  provide() {
+    return {
+      removeFriend: this.removeFriend,
     };
   },
   methods: {

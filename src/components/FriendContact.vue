@@ -4,7 +4,7 @@
     <div class="card-actions">
       <button @click="toggleDetails">Show Details</button>
       <button @click="this.$emit('set-favorite', this.id)">Toggle ⭐</button>
-      <button @click="this.$emit('remove-friend', this.id)">Say bay! 🙋‍♂️</button>
+      <button @click="removeFriend(this.id)">Say bay! 🙋‍♂️</button>
     </div>
     <ul v-if="showDetails">
       <li>{{ phone }}</li>
@@ -39,10 +39,15 @@ export default {
       required: true,
     },
   },
-  emits: ['set-favorite', 'remove-friend'],
+  inject: ['removeFriend'],
+  // removeFriend - проброс колбэка с помощью provide/inject
+  // see more: https://vuejs.org/guide/components/provide-inject.html
+
+  emits: ['set-favorite'],
   // если валидация не нужна, то можно просто задекларировать список событий компонента в emits
   // чтобы оптимизировать работу Vue-фреймворка
   // see more: https://vuejs.org/guide/components/events.html
+
   data() {
     return {
       showDetails: false,
