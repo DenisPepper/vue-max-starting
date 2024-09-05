@@ -3,8 +3,8 @@
     <h2>{{ firstName }} {{ isFavorite ? '(⭐)' : '' }}</h2>
     <div class="card-actions">
       <button @click="toggleDetails">Show Details</button>
-      <button @click="setFavoriteStatus">Toggle ⭐</button>
-      <button @click="removeFriend">Say bay! 🙋‍♂️</button>
+      <button @click="this.$emit('set-favorite', this.id)">Toggle ⭐</button>
+      <button @click="this.$emit('remove-friend', this.id)">Say bay! 🙋‍♂️</button>
     </div>
     <ul v-if="showDetails">
       <li>{{ phone }}</li>
@@ -51,12 +51,6 @@ export default {
   methods: {
     toggleDetails() {
       this.showDetails = !this.showDetails;
-    },
-    setFavoriteStatus() {
-      this.$emit('set-favorite', this.id);
-    },
-    removeFriend() {
-      this.$emit('remove-friend', this.id);
     },
   },
 };
