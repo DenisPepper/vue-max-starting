@@ -14,6 +14,7 @@
         :email="friend.email"
         :is-favorite="friend.isFavorite"
         @set-favorite="setFavoriteStatus"
+        @remove-friend="removeFriend"
       />
     </ul>
   </section>
@@ -36,6 +37,9 @@ export default {
       const newFriend = { ...formData, id: this.nextId, isFavorite: false };
       this.friends.push(newFriend);
       this.nextId += 1;
+    },
+    removeFriend(id) {
+      this.friends = this.friends.filter((friend) => friend.id !== id);
     },
   },
 };

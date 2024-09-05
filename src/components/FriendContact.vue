@@ -1,8 +1,11 @@
 <template>
   <li>
     <h2>{{ firstName }} {{ isFavorite ? '(⭐)' : '' }}</h2>
-    <button @click="toggleDetails">Show Details</button>
-    <button @click="setFavoriteStatus">Toggle ⭐</button>
+    <div class="card-actions">
+      <button @click="toggleDetails">Show Details</button>
+      <button @click="setFavoriteStatus">Toggle ⭐</button>
+      <button @click="removeFriend">Say bay! 🙋‍♂️</button>
+    </div>
     <ul v-if="showDetails">
       <li>{{ phone }}</li>
       <li>{{ email }}</li>
@@ -36,7 +39,7 @@ export default {
       required: true,
     },
   },
-  emits: ['set-favorite'],
+  emits: ['set-favorite', 'remove-friend'],
   // если валидация не нужна, то можно просто задекларировать список событий компонента в emits
   // чтобы оптимизировать работу Vue-фреймворка
   // see more: https://vuejs.org/guide/components/events.html
@@ -52,6 +55,25 @@ export default {
     setFavoriteStatus() {
       this.$emit('set-favorite', this.id);
     },
+    removeFriend() {
+      this.$emit('remove-friend', this.id);
+    },
   },
 };
 </script>
+
+<style>
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.card-actions button {
+  max-width: 40%;
+  width: 40%;
+  border-radius: 10px;
+}
+</style>
