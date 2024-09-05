@@ -3,6 +3,7 @@
     <header>
       <h1>My friends</h1>
     </header>
+    <new-friend @add-friend="addFriend"></new-friend>
     <ul>
       <friend-contact
         v-for="friend of friends"
@@ -22,28 +23,19 @@
 export default {
   data() {
     return {
-      friends: [
-        {
-          id: '1',
-          firstName: 'Captain America',
-          phone: '115599',
-          email: 'first@google.com',
-          isFavorite: false,
-        },
-        {
-          id: '2',
-          firstName: 'Iron Man',
-          phone: '446677',
-          email: 'second@google.com',
-          isFavorite: true,
-        },
-      ],
+      nextId: 1,
+      friends: [],
     };
   },
   methods: {
     setFavoriteStatus(id) {
       const friend = this.friends.find((friend) => friend.id === id);
       friend.isFavorite = !friend.isFavorite;
+    },
+    addFriend(formData) {
+      const newFriend = { ...formData, id: this.nextId, isFavorite: false };
+      this.friends.push(newFriend);
+      this.nextId += 1;
     },
   },
 };
@@ -80,7 +72,8 @@ header {
   list-style: none;
 }
 
-#app li {
+#app li,
+#app form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
