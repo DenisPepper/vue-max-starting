@@ -7,9 +7,11 @@
       <friend-contact
         v-for="friend of friends"
         :key="friend.id"
+        :id="friend.id"
         :first-name="friend.firstName"
         :phone="friend.phone"
         :email="friend.email"
+        :is-favorite="friend.isFavorite"
         @set-favorite="setFavoriteStatus"
       />
     </ul>
@@ -23,22 +25,25 @@ export default {
       friends: [
         {
           id: '1',
-          firstName: 'First Friend',
+          firstName: 'Captain America',
           phone: '115599',
           email: 'first@google.com',
+          isFavorite: false,
         },
         {
           id: '2',
-          firstName: 'Seccond Friend',
+          firstName: 'Iron Man',
           phone: '446677',
           email: 'second@google.com',
+          isFavorite: true,
         },
       ],
     };
   },
   methods: {
-    setFavoriteStatus(userName) {
-      console.log(`seting up favorite status for ${userName}`);
+    setFavoriteStatus(id) {
+      const friend = this.friends.find((friend) => friend.id === id);
+      friend.isFavorite = !friend.isFavorite;
     },
   },
 };

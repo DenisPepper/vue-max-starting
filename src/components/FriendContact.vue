@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ firstName }}</h2>
+    <h2>{{ firstName }} {{ isFavorite ? '(⭐)' : '' }}</h2>
     <button @click="toggleDetails">Show Details</button>
     <button @click="setFavoriteStatus">Toggle ⭐</button>
     <ul v-if="showDetails">
@@ -13,6 +13,10 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     firstName: {
       type: String,
       required: true,
@@ -25,6 +29,10 @@ export default {
     },
     email: {
       type: String,
+      required: true,
+    },
+    isFavorite: {
+      type: Boolean,
       required: true,
     },
   },
@@ -42,7 +50,7 @@ export default {
       this.showDetails = !this.showDetails;
     },
     setFavoriteStatus() {
-      this.$emit('set-favorite', this.firstName);
+      this.$emit('set-favorite', this.id);
     },
   },
 };
