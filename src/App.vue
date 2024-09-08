@@ -3,9 +3,9 @@
     <header>
       <h1>My friends</h1>
     </header>
-    <new-friend @add-friend="addFriend"></new-friend>
+    <NewFriend @add-friend="addFriend" />
     <ul>
-      <friend-contact
+      <FriendContact
         v-for="friend of friends"
         :key="friend.id"
         :id="friend.id"
