@@ -20,7 +20,11 @@
 </template>
 
 <script>
+import FriendContact from '/src/components/FriendContact.vue';
+import NewFriend from '/src/components/NewFriend.vue';
+
 export default {
+  components: { FriendContact, NewFriend },
   data() {
     return {
       nextId: 1,

@@ -7,7 +7,9 @@ const app = createApp(App);
 
 // this is a global registartion of componets
 // https://vuejs.org/guide/components/registration.html
-app.component('friend-contact', FriendContact);
-app.component('new-friend', NewFriend);
+
+// эти компоненты бужут загружаться локально
+// app.component('friend-contact', FriendContact);
+// app.component('new-friend', NewFriend);
 
 app.mount('#app');
