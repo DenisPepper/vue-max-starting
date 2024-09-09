@@ -35,6 +35,7 @@ import FriendList from '/src/components/FriendList.vue';
 import listViews from '/src/friends-list-options.js';
 
 export default {
+  // https://vuejs.org/guide/essentials/component-basics.html#dynamic-components
   components: { FriendList, FriendContact, NewFriend },
   data() {
     return {
