@@ -19,6 +19,7 @@
 </template>
 
 <script>
+// https://vuejs.org/guide/components/slots.html#scoped-slots
 import listViews from '/src/friends-list-options.js';
 
 export default {
@@ -34,9 +35,6 @@ export default {
         ? 'flex-direction: column'
         : 'flex-direction: column-reverse';
     },
-  },
-  mounted() {
-    console.dir();
   },
 };
 </script>
