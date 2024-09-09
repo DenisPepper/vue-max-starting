@@ -3,11 +3,15 @@
     <header>
       <h1>My friends</h1>
     </header>
-    <button @click="setRowView">Row</button>
-    <button @click="setRowReverseView">Row reverse</button>
+
     <NewFriend @add-friend="addFriend" />
 
     <FriendList :view="listView">
+      <!-- разметка template #controls попадет в slot компонента FriendList с атрибутом name="controls" -->
+      <template #controls>
+        <button type="button" @click="setRowView">Row</button>
+        <button type="button" @click="setRowReverseView">Row reverse</button>
+      </template>
       <!-- slots technic: https://vuejs.org/guide/components/slots.html -->
       <!-- компонент FriendContact попадет в slot компонента FriendList как react props.children -->
       <FriendContact

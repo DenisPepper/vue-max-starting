@@ -1,9 +1,20 @@
 <template>
-  <ul class="friends-list" :style="direction">
-    <!-- slots technic: https://vuejs.org/guide/components/slots.html -->
-    <!-- этот слот будет принимать дочерний html, как в react props.children -->
-    <slot></slot>
-  </ul>
+  <section class="friends">
+    <div class="friends__controls">
+      list direction:
+      <!-- сюда попадет контент у которого указан атрибут #controls-->
+      <slot name="controls">
+        List controls
+        <!-- fallback content -->
+      </slot>
+    </div>
+    <ul class="friends__list" :style="direction">
+      <!-- slots technic: https://vuejs.org/guide/components/slots.html -->
+      <!-- этот слот будет принимать дочерний html, как в react props.children -->
+      <!-- этот млот имеет по умолчанию name="default"-->
+      <slot></slot>
+    </ul>
+  </section>
 </template>
 
 <script>
@@ -27,7 +38,7 @@ export default {
 </script>
 
 <style>
-.friends-list {
+.friends__list {
   display: flex;
 }
 </style>
