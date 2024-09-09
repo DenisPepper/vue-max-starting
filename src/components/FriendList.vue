@@ -1,6 +1,7 @@
 <template>
   <section class="friends">
-    <div class="friends__controls">
+    <!-- если в слот ничего не передали, то он не будет создан -->
+    <div class="friends__controls" v-if="this.$slots.controls">
       list direction:
       <!-- сюда попадет контент у которого указан атрибут #controls-->
       <slot name="controls">
@@ -33,6 +34,9 @@ export default {
         ? 'flex-direction: column'
         : 'flex-direction: column-reverse';
     },
+  },
+  mounted() {
+    console.dir();
   },
 };
 </script>
