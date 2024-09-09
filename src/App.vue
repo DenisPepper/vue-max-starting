@@ -36,6 +36,7 @@ import listViews from '/src/friends-list-options.js';
 
 export default {
   // https://vuejs.org/guide/essentials/component-basics.html#dynamic-components
+  // https://vuejs.org/guide/built-ins/keep-alive.html#keepalive
   components: { FriendList, FriendContact, NewFriend },
   data() {
     return {
