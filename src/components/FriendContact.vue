@@ -61,7 +61,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+/* инкапсуляция стилей и модульный css */
+/* https://vuejs.org/api/sfc-css-features.html */
+
 .card-actions {
   display: flex;
   flex-direction: column;
