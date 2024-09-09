@@ -3,8 +3,13 @@
     <header>
       <h1>My friends</h1>
     </header>
+    <button @click="setRowView">Row</button>
+    <button @click="setRowReverseView">Row reverse</button>
     <NewFriend @add-friend="addFriend" />
-    <ul>
+
+    <FriendList :view="listView">
+      <!-- slots technic: https://vuejs.org/guide/components/slots.html -->
+      <!-- компонент FriendContact попадет в slot компонента FriendList как react props.children -->
       <FriendContact
         v-for="friend of friends"
         :key="friend.id"
@@ -15,20 +20,23 @@
         :is-favorite="friend.isFavorite"
         @set-favorite="setFavoriteStatus"
       />
-    </ul>
+    </FriendList>
   </section>
 </template>
 
 <script>
 import FriendContact from '/src/components/FriendContact.vue';
 import NewFriend from '/src/components/NewFriend.vue';
+import FriendList from '/src/components/FriendList.vue';
+import listViews from '/src/friends-list-options.js';
 
 export default {
-  components: { FriendContact, NewFriend },
+  components: { FriendList, FriendContact, NewFriend },
   data() {
     return {
       nextId: 1,
       friends: [],
+      listView: listViews.row,
     };
   },
   provide() {
@@ -48,6 +56,12 @@ export default {
     },
     removeFriend(id) {
       this.friends = this.friends.filter((friend) => friend.id !== id);
+    },
+    setRowView() {
+      this.listView = listViews.row;
+    },
+    setRowReverseView() {
+      this.listView = listViews.rowReverse;
     },
   },
 };
