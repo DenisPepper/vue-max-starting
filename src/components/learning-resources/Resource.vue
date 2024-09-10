@@ -1,15 +1,15 @@
 <template>
   <li>
-    <div>
+    <BaseCard>
       <header>
         <h3>{{ title }}</h3>
         <button>❌</button>
       </header>
-    </div>
-    <p>{{ description }}</p>
-    <nav>
-      <a :href="link" target="_blank">go to read &rarr;</a>
-    </nav>
+      <p>{{ description }}</p>
+      <nav>
+        <a :href="link" target="_blank">go to read &rarr;</a>
+      </nav>
+    </BaseCard>
   </li>
 </template>
 
