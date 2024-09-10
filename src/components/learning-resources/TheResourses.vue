@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { computed } from 'vue';
 import StoredResources from '/src/components/learning-resources/StoredResources.vue';
 import AddResoure from '/src/components/learning-resources/AddResoure.vue';
 
@@ -49,8 +50,9 @@ export default {
   provide() {
     // use function syntax so that we can access `this`
     return {
-      resources: this.storedResources,
+      resources: computed(() => this.storedResources),
       addResource: this.addNew,
+      removeResource: this.remove,
     };
   },
   methods: {
@@ -66,6 +68,11 @@ export default {
       };
       this.storedResources.unshift(newResource);
       this.activeTab = 'StoredResources';
+    },
+    remove(id) {
+      this.storedResources = this.storedResources.filter(
+        (item) => item.id !== id
+      );
     },
   },
   computed: {
