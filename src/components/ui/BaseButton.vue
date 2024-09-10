@@ -1,12 +1,14 @@
 <template>
-  <button :type="type" :class="mode" :title="title">
+  <!-- можно пропсы type и title, т.к. при их передаче в этот компонент -->
+  <!-- Vue автоматически их применит к корневому элементу этого компонента -->
+  <button :class="mode">
     <slot></slot>
   </button>
 </template>
 
 <script>
 export default {
-  props: ['type', 'title', 'mode'],
+  props: ['mode'],
 };
 </script>
 
