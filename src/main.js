@@ -1,15 +1,9 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import FriendContact from './components/FriendContact.vue';
-import NewFriend from './components/NewFriend.vue';
+import BaseCard from '/src/components/ui/BaseCard.vue';
+import BaseButton from '/src/components/ui/BaseButton.vue';
 
 const app = createApp(App);
-
-// this is a global registartion of componets
-// https://vuejs.org/guide/components/registration.html
-
-// эти компоненты бужут загружаться локально
-// app.component('friend-contact', FriendContact);
-// app.component('new-friend', NewFriend);
-
+app.component('BaseCard', BaseCard);
+app.component('BaseButton', BaseButton);
 app.mount('#app');
