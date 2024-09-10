@@ -20,7 +20,7 @@
         </textarea>
       </div>
       <div class="form-control">
-        <label for="link">Title</label>
+        <label for="link">URL:</label>
         <input type="url" id="link" name="link" ref="linkRef" />
       </div>
       <BaseButton type="submit">Save</BaseButton>
