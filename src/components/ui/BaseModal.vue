@@ -1,20 +1,22 @@
 <template>
-  <div class="modal-overlay" @click="$emit('closeModal')"></div>
-  <dialog open>
-    <header>
-      <slot name="header">
-        <h2>{{ title }}</h2>
-      </slot>
-    </header>
-    <section>
-      <slot></slot>
-    </section>
-    <menu>
-      <slot name="actions">
-        <BaseButton @click="$emit('closeModal')">❌</BaseButton>
-      </slot>
-    </menu>
-  </dialog>
+  <teleport to="body">
+    <div class="modal-overlay" @click="$emit('closeModal')"></div>
+    <dialog open>
+      <header>
+        <slot name="header">
+          <h2>{{ title }}</h2>
+        </slot>
+      </header>
+      <section>
+        <slot></slot>
+      </section>
+      <menu>
+        <slot name="actions">
+          <BaseButton @click="$emit('closeModal')">❌</BaseButton>
+        </slot>
+      </menu>
+    </dialog>
+  </teleport>
 </template>
 
 <script>
