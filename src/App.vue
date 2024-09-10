@@ -1,12 +1,14 @@
 <template>
+  <AppHeader title="List of my web resources" />
   <StoredResources :resources="storedResources" />
 </template>
 
 <script>
 import StoredResources from '/src/components/learning-resources/StoredResources.vue';
+import AppHeader from '/src/components/layouts/AppHeader.vue';
 
 export default {
-  components: { StoredResources },
+  components: { AppHeader, StoredResources },
   data() {
     return {
       storedResources: [
