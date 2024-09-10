@@ -3,10 +3,16 @@
     <!-- особенность VUE JS - @click для пользовательского компонента -->
     <!-- по умолчанию применяется для корневого html элемента в этом компоненте -->
     <!-- для BaseButton @click применится для <button> -->
-    <BaseButton @click="setActive('StoredResources')" type="button"
+    <BaseButton
+      @click="setActive('StoredResources')"
+      type="button"
+      :mode="isStoredActive"
       >Stored</BaseButton
     >
-    <BaseButton @click="setActive('AddResoure')" type="button"
+    <BaseButton
+      @click="setActive('AddResoure')"
+      type="button"
+      :mode="isAddNewActive"
       >Add new</BaseButton
     >
     <component :is="activeTab"></component>
@@ -47,6 +53,14 @@ export default {
   methods: {
     setActive(tabName) {
       this.activeTab = tabName;
+    },
+  },
+  computed: {
+    isStoredActive() {
+      return this.activeTab === 'StoredResources' ? null : 'flat';
+    },
+    isAddNewActive() {
+      return this.activeTab === 'AddResoure' ? null : 'flat';
     },
   },
 };
