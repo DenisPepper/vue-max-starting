@@ -14,7 +14,7 @@
 import Resource from '/src/components/learning-resources/Resource.vue';
 
 export default {
-  props: ['resources'],
+  inject: ['resources'],
   components: { Resource },
 };
 </script>
