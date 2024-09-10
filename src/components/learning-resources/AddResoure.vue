@@ -1,4 +1,13 @@
 <template>
+  <BaseModal v-if="showAlert" title="Invalid Input" @closeModal="closeModal">
+    <template #default>
+      <p>Please, check entered data!</p>
+      <p>The input fields must be filled in!</p>
+    </template>
+    <template #actions>
+      <BaseButton @click="closeModal">✔️</BaseButton>
+    </template>
+  </BaseModal>
   <BaseCard>
     <form @submit.prevent="submit" ref="formRef">
       <div class="form-control">
@@ -20,15 +29,31 @@
 </template>
 
 <script>
+import BaseButton from '../ui/BaseButton.vue';
+
 export default {
   inject: ['addResource'],
+  data() {
+    return {
+      showAlert: false,
+    };
+  },
   methods: {
     submit() {
-      const title = this.$refs.titleRef.value;
-      const description = this.$refs.descRef.value;
-      const link = this.$refs.linkRef.value;
+      const title = this.$refs.titleRef.value.trim();
+      const description = this.$refs.descRef.value.trim();
+      const link = this.$refs.linkRef.value.trim();
+
+      if (!title || !description || !link) {
+        this.showAlert = true;
+        return;
+      }
+
       this.$refs.formRef.reset();
       this.addResource(title, description, link);
+    },
+    closeModal() {
+      this.showAlert = false;
     },
   },
 };
