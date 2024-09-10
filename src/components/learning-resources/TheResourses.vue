@@ -15,7 +15,9 @@
       :mode="isAddNewActive"
       >Add new</BaseButton
     >
-    <component :is="activeTab"></component>
+    <KeepAlive>
+      <component :is="activeTab"></component>
+    </KeepAlive>
   </BaseCard>
 </template>
 
@@ -48,11 +50,22 @@ export default {
     // use function syntax so that we can access `this`
     return {
       resources: this.storedResources,
+      addResource: this.addNew,
     };
   },
   methods: {
     setActive(tabName) {
       this.activeTab = tabName;
+    },
+    addNew(title, description, link) {
+      const newResource = {
+        id: new Date().toISOString,
+        title,
+        description,
+        link,
+      };
+      this.storedResources.unshift(newResource);
+      this.activeTab = 'StoredResources';
     },
   },
   computed: {
